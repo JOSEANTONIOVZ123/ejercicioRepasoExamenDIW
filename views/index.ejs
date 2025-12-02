@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>RetroBlog - Inicio</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-overlay">
+    <h1 class="site-title">RetroBlog</h1>
+    <p class="site-subtitle">Un blog para amantes del retro</p>
+  </div>
+</header>
+
+<nav class="main-nav">
+  <a href="#" class="filter-link" data-category="atari">Atari</a>
+  <% categories.forEach(cat => { %>
+    <a href="#" class="filter-link" data-category="<%= cat %>"><%= cat %></a>
+  <% }) %>
+</nav>
+
+<main class="container">
+  <h2 class="section-title" id="section-title">Últimas entradas del blog</h2>
+
+  <section class="post-grid">
+    <% posts.forEach(post => { %>
+      <article class="post-card" data-category="<%= post.category %>">
+        <a href="/post/<%= post.id %>">
+          <img src="<%= post.thumbnail %>" alt="<%= post.title %>">
+        </a>
+        <h3 class="post-card-title">
+          <a href="/post/<%= post.id %>"><%= post.title %></a>
+        </h3>
+        <p class="post-card-subtitle"><%= post.intro %></p>
+      </article>
+    <% }) %>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>Created by José Antonio Villodres Zafra (simulacro examen)</p>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterLinks = document.querySelectorAll('.filter-link');
+    const postCards = document.querySelectorAll('.post-card');
+    const sectionTitle = document.getElementById('section-title');
+
+    filterLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Verificar si el botón ya está activo
+        const isActive = this.classList.contains('active');
+        
+        // Remover clase active de todos los enlaces
+        filterLinks.forEach(l => l.classList.remove('active'));
+        
+        // Si ya estaba activo, desmarcarlo y mostrar todos
+        if (isActive) {
+          // Mostrar todas las tarjetas
+          postCards.forEach(card => {
+            card.style.display = 'block';
+          });
+          
+          // Restaurar el título original
+          sectionTitle.textContent = 'Últimas entradas del blog';
+        } else {
+          // Añadir clase active al enlace clickeado
+          this.classList.add('active');
+          
+          // Obtener la categoría seleccionada
+          const selectedCategory = this.getAttribute('data-category');
+          
+          // Filtrar y mostrar/ocultar tarjetas
+          postCards.forEach(card => {
+            const cardCategory = card.getAttribute('data-category');
+            const cardTitle = card.querySelector('.post-card-title a').textContent.toLowerCase();
+            
+            if (selectedCategory === 'atari') {
+              // Filtrar posts que contengan "Atari" en el título
+              if (cardTitle.includes('atari')) {
+                card.style.display = 'block';
+              } else {
+                card.style.display = 'none';
+              }
+            } else if (cardCategory === selectedCategory) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+          
+          // Actualizar el título
+          if (selectedCategory === 'atari') {
+            sectionTitle.textContent = 'Entradas sobre Atari';
+          } else {
+            sectionTitle.textContent = `Entradas sobre ${selectedCategory}`;
+          }
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

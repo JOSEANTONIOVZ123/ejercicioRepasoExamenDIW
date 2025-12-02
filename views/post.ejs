@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title><%= post.title %> - RetroBlog</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-overlay">
+    <h1 class="site-title">RetroBlog</h1>
+    <p class="site-subtitle">Un blog para amantes del retro</p>
+  </div>
+</header>
+
+<nav class="main-nav">
+  <a href="/">Atari</a>
+  <a href="/">Ordenadores</a>
+  <a href="/">Consolas</a>
+  <a href="/">Videojuegos</a>
+</nav>
+
+<main class="container">
+  <article class="post-detail">
+    <img src="<%= post.image %>" alt="<%= post.title %>" class="post-detail-image">
+
+    <h1 class="post-detail-title"><%= post.title %></h1>
+
+    <p class="post-detail-subtitle"><%= post.intro %></p>
+
+    <div class="post-detail-content">
+      <!-- EXACTAMENTE lo que pide el profesor -->
+      <%- post.content %>
+    </div>
+
+    <p class="volver"><a href="/">← Volver al inicio</a></p>
+  </article>
+</main>
+
+<footer class="footer">
+  <p>Created by José Antonio Villodres Zafra (simulacro examen)</p>
+</footer>
+
+</body>
+</html>

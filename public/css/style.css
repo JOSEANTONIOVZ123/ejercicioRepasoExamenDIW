@@ -1,0 +1,179 @@
+/* RESET BÁSICO */
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    color: #222;
+  }
+  
+  /* CABECERA CON IMAGEN (puede ser aleatoria) */
+  .header {
+    height: 190px;
+    background-image: url("https://picsum.photos/1200/250?blur=1&random=7");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  
+  .header-overlay {
+    background: rgba(0, 0, 0, 0.55);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 40px;
+    color: white;
+  }
+  
+  .site-title {
+    font-size: 36px;
+    margin: 0;
+  }
+  
+  .site-subtitle {
+    font-size: 18px;
+    margin-top: 5px;
+  }
+  
+  /* MENÚ NEGRO SUPERIOR */
+  .main-nav {
+    background: black;
+    padding: 10px 40px;
+  }
+  
+  .main-nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 14px;
+  }
+  
+  .main-nav a:hover {
+    text-decoration: underline;
+  }
+
+  .main-nav a.active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  
+  /* CONTENEDOR PRINCIPAL */
+  .container {
+    max-width: 1050px;
+    margin: 30px auto 60px;
+  }
+  
+  /* TÍTULO SECCIÓN */
+  .section-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 22px;
+  }
+  
+  /* GRID DE POSTS (3 columnas) */
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+  }
+  
+  /* TARJETA DE POST (portada) */
+  .post-card {
+    background: #fbfbfb;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Centrar la última tarjeta cuando está sola en una fila */
+  .post-card:last-child:nth-child(3n+1) {
+    grid-column: 2;
+  }
+  
+  .post-card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .post-card-title {
+    font-size: 16px;
+    margin: 0;
+  }
+  
+  .post-card-title a {
+    text-decoration: none;
+    color: #222;
+  }
+  
+  .post-card-title a:hover {
+    text-decoration: underline;
+  }
+  
+  .post-card-subtitle {
+    font-size: 13px;
+    color: #555;
+    margin-top: 4px;
+  }
+  
+  /* PÁGINA DE DETALLE */
+  .post-detail-image {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+  }
+  
+  .post-detail-title {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 26px;
+  }
+  
+  .post-detail-subtitle {
+    text-align: center;
+    color: #444;
+  }
+  
+  .post-detail-content {
+    width: 85%;
+    margin: 20px auto;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  
+  .post-detail-content p {
+    margin-bottom: 12px;
+  }
+  
+  /* ENLACE VOLVER */
+  .volver {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .volver a {
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 15px;
+  }
+  
+  .volver a:hover {
+    text-decoration: underline;
+  }
+  
+  /* FOOTER */
+  .footer {
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 13px;
+  }
+  
